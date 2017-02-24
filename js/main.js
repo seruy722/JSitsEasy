@@ -1,17 +1,16 @@
+﻿
+'use strict';
+let favoriteCars = ['BMW', 'Reno', 'Subaru'];
 
-"use strict";
-/*
-1. Напишите функцию, которая принимает 2 аргумента и отображает их сумму в консоле
-*/
+let user = {
+  name: 'Sergey',
+  surname: 'Denisiuk',
+  dateOfBith: 1989,
+  favoriteCars,
+  friends: [{ name: 'Vasja', surname: 'Petrovych' }, { name: 'Kolja', surname: 'Shevko' }]
+};
 
-// function sum(num1, num2) {
-//   return num1 + num2;
-// }
-
-let sum = ((num1, num2) => num1 + num2);
-
-
-console.log(sum(3, 5)); //8
-console.log(sum(10, 50)); // 60
-
+console.log(user.friends);
+console.log(user.friends[0]);
+console.log(user.favoriteCars);
 

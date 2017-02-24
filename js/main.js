@@ -1,124 +1,98 @@
-﻿
-'use strict';
-/*
-1. Напишите функцию которая принимает в качестве аргумента массив
-и элемент массива и добавляет элемент в конец массива
-*/
-
-let arr = [];
-
-let addToArray = (arrParam, newElem) => {
-  arrParam.push(newElem);
-};
-
-arr.push(35);
-arr.push(35)
-console.log(arr); // [35,35]
-
-
-
-addToArray(arr, { functionTypes: ['functionExpression', 'functionDeclaration'] });
-console.log(arr); // [35, 35, { functionTypes: ['functionExpression', 'functionDeclaration'] }]
-
+﻿'use strict';
 
 /*
-2. Напишите функцию которая получает 3 параметра 
-и возвращает объект типа: 
-    
-    {
-      argument1: param1,
-      argument2: param2,
-      argument3: param3,
-    }
-    
-*/
-
-let simpleObjectGenerator = (param1, param2, param3) => {
+ 1. Напишите функцию которая принимает 2 числа 
+ и возвращает массив содержащий числа между первым числом и вторым числом;
+ */
 
 
-  return {
-    argument1: 77,
-    argument2: [{ name: 'Egor' }, { name: 'Katya' }, { name: 'Vera' }],
-    argument3: 'PRIVET KAK DELA'
+let numbersBetween = (a, b) => {
+  let arr = [];
+  for (let i = a + 1; i < b; i++) {
+    arr.push(i);
   }
-};
-
-console.log(simpleObjectGenerator('protocol', { url: '22' }, 8000));
-
-/* {
-   argument1:'protocol',
-   argument2:{url:'22'},
-   argument3:8000
-}*/
-
-var userNames = [{ name: 'Egor' }, { name: 'Katya' }, { name: 'Vera' }];
-
-console.log(simpleObjectGenerator(77, userNames, 'privet kak dela chto novogo'.toUpperCase()));
-/* {
- argument1:'77',
- argument2:[{ name: 'Egor' }, { name: 'Katya' }, { name: 'Vera' }],
- argument3:PRIVET KAK DELA CHTO NOVOGO
- }*/
-
-
-var number2 = 150;
-var number3 = 3;
-let number4 = 10;
-
-let add = (a, b) => {
-  return a + b;
+  return arr;
 };
 
 
-
-add(number4, number3);
+console.log(numbersBetween(1, 5)); // 2,3,4
+console.log(numbersBetween(3, 6)); // 4,5
+console.log(numbersBetween(12, 15)); // 13,14
 
 /*
-3.  Напишите функцию которая принимает 3 аргумента, 
-     третий аргумент - это объект.
-    
-    Функция создает объект где ключ это первый аргумент, 
-    а значение - второй аргумент
-    и добавляет свойство "name" из объекта 
-    и возвращает данный новый объект
-*/
+ 2. Перепешите задачу FizzBuzz, но с использованием цикла. 
+ Расчет чисел должен идти до 100
 
-var myName = { name: 'Sergey' };
-
-let addNameToUser = (newKey, newValue, userName) => {
-
-  let newObject = {};
-  newObject[newKey] = newValue;
-  newObject.name = userName.name;
-  return newObject;
-
-};
-console.log(addNameToUser('family', '%Denisiuk%', myName));
-console.log(myName);
-
-
-
-/*
--> @@ SUPER
-  Напишите функцию, которая будет возвращать 'Fizz' 
-   если передаваемый параметр кратен 3,
-   'Buzz', если передаваемый параметр кратен 5, 'FizzBuzz' - если параметер кратен 3 и 5
-   Если передаваемое число не кратно 3 или 5, то вернуть указанный параметр
-*/
+ */
 
 let fizzBuzz = num => {
   let str = '';
-
-  if (!(num % 3)) {str += 'Fizz';}
-  if (!(num % 5)) {str += 'Buzz';}
-  if (!str.length) {return num;}
+  if (!(num % 3)) {
+    str = str + 'Fizz';
+  }
+  if (num % 5 == 0) {
+    str = str + 'Buzz';
+  }
+  if (!str.length) {
+    return num;
+  }
   return str;
 };
 
-console.log(fizzBuzz(1)); // 1
-console.log(fizzBuzz(2)); // 2
-console.log(fizzBuzz(3)); // 'Fizz'
-console.log(fizzBuzz(5)); // 'Buzz'
-// ...
-console.log(fizzBuzz(15)); // 'FizzBuzz'
-console.log(fizzBuzz(21)); // 'Fizz'
+let fizzBuzz100 = () => {
+  let num = 1;
+  while (num < 100) {
+    console.log(fizzBuzz(num));
+    num++;
+  }
+};
+
+fizzBuzz100();
+
+
+/*
+ 3. Напишите функцию которая принимает 1 аргумент - массив 
+ И возвращает новый массив содержащий типы значений переменных
+ */
+
+let arr = [ 1, null, undefined, 'str', {}, [], function() {} ];
+// let arr = ['privet', 12, {}, [1, 2]];
+let arr2 = ['privet', 12, {}, [1, 2]];
+
+let returnArr = argument => {
+  let newArr = [];
+  for (let i = 0; i < argument.length; i++) {
+
+    newArr.push(typeof (argument[i]));
+  }
+  return newArr;
+};
+console.log(returnArr(arr));
+console.log(returnArr(arr2));
+
+
+/*
+ @@SUPER@@. Вам дан массив array, содержащий внутри объекты. 
+ Напишите функцию которая внутри цикла проходится по каждому элементу массива 
+ И проверяет какой тип данных содержит свойство age, если тип данных NaN, тогда добавляет данному объекту свойство unknownAge: true
+ Далее создайте новый массив содержащий все объекты есть свойство unknownAge:true
+ */
+
+let array = Array.from({ length: 35 }).map((value, index) => index % 2 ? { age: index + 2 } : { age: NaN });
+console.log(array); //[ {age:NaN}, {age:3}, {age:NaN}, {age:5}, {age:NaN}, {age:7} ....]
+console.log(array.length); // 35
+
+
+let solution = arr => {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    let objectInArray = arr[i];
+    if (isNaN(objectInArray.age)) {
+      objectInArray.unknownAge = true;
+      newArr.push(objectInArray);
+    }
+  }
+  return newArr;
+};
+
+console.log(solution(array));

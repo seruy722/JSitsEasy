@@ -42,30 +42,40 @@ let homeSentence = `${array[2]} ${array[1]} ${array[4]} ${array[0]} ${array[3]}`
 console.log(homeSentence);
 
 /*
- 3. Добавьте свойста 4 новых свойства в объект используя квадратные скобки и точку.
+ 3. Добавьте 4 новых свойства в объект используя квадратные скобки и точку.
  */
 
 
 let myObj = {};
 
+myObj.companyName = 'Asterix';
+myObj.location = 'Kharkiv';
+myObj['wokers'] = 20;
+myObj['id'] = 6666;
+
+console.log(myObj);
+
+
 /*
- 4. Используя метод .slice, добавте в недостающие символы в строку
+ 4. Используя метод .slice, добавте недостающие символы в строку
  */
 
-let sliceString = 'Ytube'; //
+let sliceString = 'Ytube';
+let l = sliceString[3];
+sliceString = sliceString.slice(0, 1) +'ou'+ sliceString[1].toLocaleUpperCase() + sliceString.slice(2);
 
-console.log(sliceString); // YouTube
+
+
+
+console.log(s); // YouTube 
 
 /*
  5. Преобразуйте строку x, в максимально удобно читаемый вид
 */
 
 let frameworks = [2.8, 'Angular', 'Angular2', 'React/Redux'];
-let x = `
-        google 
-          released new version
-            ${frameworks[1]} Math.floor(${frameworks[0]})
-              But real speed is ${frameworks[frameworks.length - 1]}`;
+let x = `google released new version ${frameworks[1]} Math.floor(${frameworks[0]}) But real speed is ${frameworks[frameworks.length - 1]}`;
+
 console.log(x);
 
 

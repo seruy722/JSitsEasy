@@ -162,3 +162,6 @@ let openBraces = arr => {
 };
 
 console.log(openBraces(arr2));
+
+
+
